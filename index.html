@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYDIA'S TOOLBOX | Portfolio</title>
+    <meta name="description" content="展示个人开发的技术写作和本地化提效工具">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="#" class="nav-logo" data-i18n="nav.logo">LYDIA'S TOOLBOX</a>
+        <div class="nav-links">
+            <a href="#tools" data-i18n="nav.tools">工具</a>
+            <a href="#about" data-i18n="nav.about">关于</a>
+            <div class="lang-toggle">
+                <button class="active" data-lang="zh">中文</button>
+                <button data-lang="en">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">LYDIA'S TOOLBOX</h1>
+            <p class="subtitle" data-i18n="hero.subtitle">专注于用Vibe Coding解决技术写作工作流中的痛点，打造实用的提效工具</p>
+            <div class="hero-tags">
+                <span class="tag" data-i18n="hero.tag1">Python</span>
+                <span class="tag" data-i18n="hero.tag2">技术写作</span>
+                <span class="tag" data-i18n="hero.tag3">OCR</span>
+                <span class="tag" data-i18n="hero.tag4">本地化</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工具展示区 -->
+    <section id="tools" class="section">
+        <h2 class="section-title" data-i18n="tools.title">我的工具</h2>
+        <p class="section-desc" data-i18n="tools.desc">每一款工具都源于实际工作中的痛点，经过反复打磨后打包为免安装的桌面应用</p>
+
+        <div class="tools-grid">
+
+            <!-- 工具 1：HTML 批量对比工具 -->
+            <div class="tool-card tool-card-clickable" data-detail="tool-html-diff.html">
+                <div class="tool-screenshot">
+                    <img src="assets/html_diff_compare.png" alt="HTML 批量对比工具界面" loading="lazy">
+                </div>
+                <div class="tool-body">
+                    <div class="tool-header">
+                        <div class="tool-icon blue">📄</div>
+                        <div class="tool-title">
+                            <h3 data-i18n="tool1.name">HTML 批量对比工具</h3>
+                            <span class="tool-tagline" data-i18n="tool1.tagline">HTML Diff Compare</span>
+                        </div>
+                    </div>
+                    <p class="tool-desc" data-i18n="tool1.desc">批量对比两个文件夹中 HTML 文件的差异，自动忽略 class/style 等标签属性，只关注用户可见的文本和图片变化。支持 index.json 文件映射和命令行调用。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag" data-i18n="tool1.f1">批量对比</span>
+                        <span class="feature-tag" data-i18n="tool1.f2">智能过滤属性</span>
+                        <span class="feature-tag" data-i18n="tool1.f3">差异高亮</span>
+                        <span class="feature-tag" data-i18n="tool1.f4">导出报告</span>
+                        <span class="feature-tag" data-i18n="tool1.f5">命令行支持</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a class="btn btn-primary btn-sm" href="#" target="_blank" data-release="html_diff_compare" data-i18n="tool.download">下载 EXE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工具 2：界面词校验工具 -->
+            <div class="tool-card tool-card-clickable" data-detail="tool-term-checker.html">
+                <div class="tool-screenshot">
+                    <img src="assets/term_checker.png" alt="界面词校验工具界面" loading="lazy">
+                </div>
+                <div class="tool-body">
+                    <div class="tool-header">
+                        <div class="tool-icon green">🔍</div>
+                        <div class="tool-title">
+                            <h3 data-i18n="tool2.name">界面词校验工具</h3>
+                            <span class="tool-tagline" data-i18n="tool2.tagline">Term Checker</span>
+                        </div>
+                    </div>
+                    <p class="tool-desc" data-i18n="tool2.desc">从 PDF 手册中智能提取界面词（被引号包裹的 UI 文本），通过上下文关键词过滤代码噪音，自动对照中英术语表标记未登记的界面词，并支持 PDF 高亮定位。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag" data-i18n="tool2.f1">智能提取</span>
+                        <span class="feature-tag" data-i18n="tool2.f2">术语核对</span>
+                        <span class="feature-tag" data-i18n="tool2.f3">PDF 定位</span>
+                        <span class="feature-tag" data-i18n="tool2.f4">忽略标记</span>
+                        <span class="feature-tag" data-i18n="tool2.f5">导出结果</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a class="btn btn-primary btn-sm" href="#" target="_blank" data-release="term_checker" data-i18n="tool.download">下载 EXE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工具 3：界面词定位工具 -->
+            <div class="tool-card tool-card-clickable" data-detail="tool-term-locator.html">
+                <div class="tool-screenshot">
+                    <img src="assets/term_locator.png" alt="界面词定位工具界面" loading="lazy">
+                </div>
+                <div class="tool-body">
+                    <div class="tool-header">
+                        <div class="tool-icon orange">🎯</div>
+                        <div class="tool-title">
+                            <h3 data-i18n="tool3.name">界面词定位工具</h3>
+                            <span class="tool-tagline" data-i18n="tool3.tagline">Term Locator</span>
+                        </div>
+                    </div>
+                    <p class="tool-desc" data-i18n="tool3.desc">以中文手册界面截图为切入点，基于 PaddleOCR 批量识别截图文字并建立索引；输入关键词即可在全部截图中红框定位界面词位置，词性语境一眼可辨，索引可保存复用与团队共享。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag" data-i18n="tool3.f1">OCR 识别</span>
+                        <span class="feature-tag" data-i18n="tool3.f2">界面词定位</span>
+                        <span class="feature-tag" data-i18n="tool3.f3">红框高亮</span>
+                        <span class="feature-tag" data-i18n="tool3.f4">索引缓存</span>
+                        <span class="feature-tag" data-i18n="tool3.f5">索引共享</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a class="btn btn-primary btn-sm" href="#" target="_blank" data-release="term_locator" data-i18n="tool.download">下载 EXE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工具 4：XML 文件排序工具 -->
+            <div class="tool-card tool-card-clickable" data-detail="tool-xml-sort.html">
+                <div class="tool-screenshot">
+                    <img src="assets/xml_sort.png" alt="XML 文件排序工具效果" loading="lazy">
+                </div>
+                <div class="tool-body">
+                    <div class="tool-header">
+                        <div class="tool-icon blue">🗂️</div>
+                        <div class="tool-title">
+                            <h3 data-i18n="tool4.name">XML 文件排序工具</h3>
+                            <span class="tool-tagline" data-i18n="tool4.tagline">SortTool / SortUndo</span>
+                        </div>
+                    </div>
+                    <p class="tool-desc" data-i18n="tool4.desc">将翻译系统导出的 XML 文件按手册目录架构一键排序：文件夹拖到图标上即自动解析 XLF 添加序号前缀，配套 SortUndo 翻译后一键还原原始文件名。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag" data-i18n="tool4.f1">拖拽排序</span>
+                        <span class="feature-tag" data-i18n="tool4.f2">XLF 智能匹配</span>
+                        <span class="feature-tag" data-i18n="tool4.f3">多级模糊匹配</span>
+                        <span class="feature-tag" data-i18n="tool4.f4">一键还原</span>
+                        <span class="feature-tag" data-i18n="tool4.f5">命令行支持</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a class="btn btn-primary btn-sm" href="#" target="_blank" data-release="xml_sort" data-i18n="tool.download">下载 EXE</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="section about-section">
+        <h2 class="section-title" data-i18n="about.title">关于我</h2>
+        <p class="section-desc" data-i18n="about.desc">技术栈与背景</p>
+        <div class="about-card">
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about.p1">我是一名专注于效率工具开发的工程师，擅长用 Python 将重复性人工操作自动化。熟悉桌面应用开发（PyQt5/Tkinter）、OCR 应用、Windows 端软件打包分发。</p>
+                    <p data-i18n="about.p2">我的工具均来自真实工作场景：从文档对比、术语校验到 OCR 定位，每一款都经过实际项目的反复验证和迭代。</p>
+                    <p data-i18n="about.p3">我相信最好的工具是让人感受不到工具的存在——它们安静地解决问题，让你专注于更有价值的工作。</p>
+                </div>
+                <div class="about-photo">
+                    <img src="assets/profile.jpg" alt="个人照片" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-i18n="footer.text">© 2026 · 用代码消除重复劳动 · <a href="https://github.com" target="_blank" data-i18n="footer.github">GitHub</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

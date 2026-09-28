@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方案二：暗调玻璃风</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; background:#0d0d0d; color:#eee; }
+/* 导航 */
+.navbar { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(13,13,13,0.7); backdrop-filter:blur(20px); border-bottom:1px solid rgba(245,175,25,0.15); padding:0 2rem; height:64px; display:flex; align-items:center; justify-content:space-between; }
+.nav-logo { font-size:1.2rem; font-weight:700; background:linear-gradient(135deg,#F12711,#F5AF19); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
+.nav-links { display:flex; gap:1.5rem; align-items:center; }
+.nav-links a { text-decoration:none; color:#888; font-size:0.95rem; }
+.lang-toggle { display:flex; gap:4px; background:rgba(255,255,255,0.05); border:1px solid rgba(245,175,25,0.2); border-radius:20px; padding:4px; }
+.lang-toggle button { border:none; background:transparent; padding:4px 12px; border-radius:16px; font-size:0.85rem; color:#666; }
+.lang-toggle button.active { background:linear-gradient(135deg,#F12711,#F5AF19); color:#fff; }
+/* 英雄区 */
+.hero { min-height:55vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:100px 2rem 50px; background:linear-gradient(135deg,#F12711 0%,#F5AF19 100%); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; width:500px; height:500px; border-radius:50%; background:rgba(0,0,0,0.15); top:-150px; left:-100px; }
+.hero::after { content:''; position:absolute; width:350px; height:350px; border-radius:50%; background:rgba(255,255,255,0.08); bottom:-100px; right:8%; }
+.hero h1 { font-size:2.8rem; font-weight:800; margin-bottom:1rem; letter-spacing:1px; text-shadow:0 4px 20px rgba(0,0,0,0.3); }
+.hero .subtitle { font-size:1.15rem; color:rgba(255,255,255,0.92); max-width:560px; margin:0 auto 1.8rem; }
+.hero-tags { display:flex; gap:0.7rem; justify-content:center; }
+.hero-tags .tag { background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:6px 16px; border-radius:20px; font-size:0.85rem; backdrop-filter:blur(10px); }
+/* 工具区 */
+.section { max-width:1100px; margin:0 auto; padding:3.5rem 2rem; }
+.section-title { text-align:center; font-size:1.9rem; font-weight:700; background:linear-gradient(135deg,#F12711,#F5AF19); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.section-desc { text-align:center; color:#666; margin:0.5rem auto 2.5rem; }
+.tools-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
+/* 暗色玻璃卡片 */
+.tool-card { background:rgba(255,255,255,0.06); backdrop-filter:blur(24px); border-radius:18px; border:1px solid rgba(245,175,25,0.18); overflow:hidden; transition:all 0.3s; position:relative; }
+.tool-card::before { content:''; position:absolute; inset:0; border-radius:18px; padding:1px; background:linear-gradient(135deg,rgba(241,39,17,0.4),rgba(245,175,25,0.4)); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity 0.3s; pointer-events:none; }
+.tool-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(241,39,17,0.25); }
+.tool-card:hover::before { opacity:1; }
+.tool-screenshot { aspect-ratio:16/9; overflow:hidden; background:#1a1a1a; border-bottom:1px solid rgba(245,175,25,0.1); }
+.tool-screenshot img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.9; }
+.tool-body { padding:1.4rem; }
+.tool-header { display:flex; align-items:center; gap:0.7rem; margin-bottom:0.7rem; }
+.tool-icon { width:44px; height:44px; border-radius:12px; background:rgba(245,175,25,0.12); border:1px solid rgba(245,175,25,0.2); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+.tool-title h3 { font-size:1.1rem; color:#fff; }
+.tool-title .tool-tagline { font-size:0.82rem; color:#666; }
+.tool-desc { color:#999; font-size:0.9rem; margin-bottom:1rem; }
+.tool-features { display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.1rem; }
+.feature-tag { background:rgba(245,175,25,0.08); border:1px solid rgba(245,175,25,0.2); padding:4px 12px; border-radius:20px; font-size:0.76rem; color:#e8a33d; }
+.tool-actions { display:flex; gap:0.7rem; padding-top:1rem; border-top:1px solid rgba(245,175,25,0.12); }
+.btn { display:inline-flex; align-items:center; padding:0.5rem 1.1rem; border-radius:10px; font-size:0.85rem; font-weight:600; text-decoration:none; }
+.btn-primary { background:linear-gradient(135deg,#F12711,#F5AF19); color:#fff; box-shadow:0 4px 20px rgba(241,39,17,0.4); }
+.btn-outline { background:transparent; color:#F5AF19; border:1.5px solid rgba(245,175,25,0.5); }
+/* 关于我 */
+.about-section { background:#000; position:relative; overflow:hidden; }
+.about-section::before { content:''; position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(241,39,17,0.08),transparent 70%); top:-200px; left:-150px; }
+.about-section .section-desc { color:#555; }
+.about-content { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:stretch; position:relative; }
+.about-text { display:flex; flex-direction:column; justify-content:center; }
+.about-text p { color:#999; margin-bottom:1rem; font-size:0.95rem; }
+.about-photo { display:flex; justify-content:center; align-items:center; position:relative; }
+.about-photo::before { content:''; position:absolute; width:70%; height:70%; border-radius:50%; background:radial-gradient(circle,rgba(245,175,25,0.2),transparent 70%); filter:blur(30px); }
+.about-photo img { max-width:100%; max-height:380px; border-radius:16px; box-shadow:0 8px 40px rgba(0,0,0,0.6), 0 0 80px rgba(245,175,25,0.15); object-fit:cover; position:relative; }
+/* 页脚 */
+.footer { text-align:center; padding:1.6rem; color:#444; font-size:0.85rem; border-top:1px solid rgba(245,175,25,0.1); }
+.badge { position:fixed; bottom:20px; left:20px; background:linear-gradient(135deg,#F12711,#F5AF19); color:#fff; padding:8px 18px; border-radius:24px; font-size:0.9rem; font-weight:600; box-shadow:0 4px 16px rgba(241,39,17,0.5); z-index:200; }
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="#" class="nav-logo">LYDIA'S TOOLBOX</a>
+    <div class="nav-links">
+        <a href="#tools">工具</a><a href="#about">关于</a>
+        <div class="lang-toggle"><button class="active">中文</button><button>EN</button></div>
+    </div>
+</nav>
+<section class="hero">
+    <div>
+        <h1>LYDIA'S TOOLBOX</h1>
+        <p class="subtitle">专注于用 Vibe Coding 打造实用的提效工具，解决技术写作工作流中的痛点</p>
+        <div class="hero-tags"><span class="tag">Python</span><span class="tag">技术写作</span><span class="tag">OCR</span><span class="tag">本地化</span></div>
+    </div>
+</section>
+<section id="tools" class="section">
+    <h2 class="section-title">我的工具</h2>
+    <p class="section-desc">每一款工具都源于技术写作和本地化实际工作中的痛点</p>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-screenshot"><img src="../assets/html_diff_compare.png" alt=""></div>
+            <div class="tool-body">
+                <div class="tool-header">
+                    <div class="tool-icon">📄</div>
+                    <div class="tool-title"><h3>HTML 批量对比工具</h3><span class="tool-tagline">HTML Diff Compare</span></div>
+                </div>
+                <p class="tool-desc">批量对比两个手册版本文件夹中 HTML 文件的差异，直观呈现不同版本的文本和图片变化。</p>
+                <div class="tool-features"><span class="feature-tag">批量对比</span><span class="feature-tag">智能过滤属性</span><span class="feature-tag">差异高亮</span><span class="feature-tag">导出报告</span></div>
+                <div class="tool-actions"><a class="btn btn-primary" href="#">下载 EXE</a><a class="btn btn-outline" href="#">查看源码</a></div>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-screenshot"><img src="../assets/term_checker.png" alt=""></div>
+            <div class="tool-body">
+                <div class="tool-header">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-title"><h3>界面词校验工具</h3><span class="tool-tagline">Term Checker</span></div>
+                </div>
+                <p class="tool-desc">从 PDF 手册中智能提取界面词，自动对照中英术语表标记翻译不准确的界面词。</p>
+                <div class="tool-features"><span class="feature-tag">智能提取</span><span class="feature-tag">术语核对</span><span class="feature-tag">PDF 定位</span><span class="feature-tag">导出结果</span></div>
+                <div class="tool-actions"><a class="btn btn-primary" href="#">下载 EXE</a><a class="btn btn-outline" href="#">查看源码</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="section about-section">
+    <h2 class="section-title">关于我</h2>
+    <p class="section-desc">背景</p>
+    <div class="about-content">
+        <div class="about-text">
+            <p>专注于效率工具开发的技术文档工程师，本硕毕业于浙江大学，擅长通过 Vibe Coding 将重复性人工操作自动化。</p>
+            <p>我的工具均来自真实工作场景：从文档对比、术语校验到 OCR 定位，每一款都经过实际项目的反复验证和迭代。</p>
+            <p>我相信最好的工具是让人感受不到工具的存在——它们安静地解决问题，让你专注于更有价值的工作。</p>
+        </div>
+        <div class="about-photo"><img src="../assets/profile.jpg" alt=""></div>
+    </div>
+</section>
+<footer class="footer">© 2026 · 用代码消除重复劳动 · GitHub</footer>
+<div class="badge">方案二：暗调玻璃风</div>
+</body>
+</html>

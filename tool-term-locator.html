@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="tl.title">界面词定位工具 — Lydia's Toolbox</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 痛点：前 2 个核心痛点为大卡，后 3 个为小卡，两行均对称 */
+        .pain-grid-5 { grid-template-columns: repeat(6, 1fr); }
+        .pain-grid-5 .pain-card.core { grid-column: span 3; }
+        .pain-grid-5 .pain-card { grid-column: span 2; }
+        .pain-grid-5 .pain-card.core {
+            background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,245,240,0.85));
+            border-color: rgba(241, 39, 17, 0.25);
+            box-shadow: 0 6px 26px rgba(241, 39, 17, 0.1);
+        }
+        .pain-grid-5 .pain-card.core p { color: #555; }
+        @media (max-width: 768px) {
+            .pain-grid-5 { grid-template-columns: 1fr; }
+            .pain-grid-5 .pain-card,
+            .pain-grid-5 .pain-card.core { grid-column: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">LYDIA'S TOOLBOX</a>
+        <div class="nav-links">
+            <a href="index.html#tools" data-i18n="nav.tools">工具</a>
+            <a href="index.html#about" data-i18n="nav.about">关于</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-lang="zh">中文</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </nav>
+
+    <!-- 详情页英雄区 -->
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a href="index.html" class="back-link" data-i18n="d.back">← 返回首页</a>
+            <h1 data-i18n="tl.name">界面词定位工具</h1>
+            <p class="detail-tagline">Term Locator</p>
+            <p class="detail-intro" data-i18n="tl.intro">以中文手册中的界面截图为切入点，基于 PaddleOCR 批量识别截图中的文字并建立索引。输入任意界面词，即可在全部截图中快速定位它的位置并红框高亮——词性、语境一眼可辨；索引一次建成，可反复使用、团队共享。</p>
+            <div class="detail-actions">
+                <a class="btn btn-white" href="https://github.com/Linxinyi-071/term_locator/releases/latest" target="_blank" data-i18n="tool.download">下载 EXE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 一、痛点 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.pain">痛点</h2>
+        <p style="color:#555; margin-bottom:1.5rem;" data-i18n="tl.painIntro">在软件界面翻译与本地化工作中，译员需要确认每一个界面词的准确含义和出现位置，传统工作方式存在以下痛点：</p>
+        <div class="pain-grid pain-grid-5">
+            <div class="pain-card core">
+                <h3 data-i18n="tl.c1.t">🔤 脱离语境，无法判断词性</h3>
+                <p data-i18n="tl.c1.d">仅凭 Excel / CSV 术语表翻译界面词时，看到的只有孤立的文字。例如"设置"既可能是名词（Settings），也可能是动词按钮（Set / Configure），脱离界面上下文极易误译</p>
+            </div>
+            <div class="pain-card core">
+                <h3 data-i18n="tl.c2.t">🖥️ 软件中难以找到对应界面</h3>
+                <p data-i18n="tl.c2.d">想确认界面词的实际语境，只能在软件里逐层点击菜单、逐个打开对话框翻找；大型软件界面层级深，找一个词可能要花十几分钟，还容易遗漏</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="tl.c3.t">🌐 截图无法搜索</h3>
+                <p data-i18n="tl.c3.d">界面截图本质是图片，不含可搜索文本，Ctrl+F 完全失效，成百上千张图只能逐张打开、靠肉眼查找</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="tl.c4.t">🔎 重复翻找</h3>
+                <p data-i18n="tl.c4.d">每次翻译或校对都要把截图重翻一遍；换人协作时，上一个人查过哪些图、词在哪张图上，完全无法复用</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="tl.c5.t">😵 极易遗漏</h3>
+                <p data-i18n="tl.c5.d">同一个界面词可能散落在多张截图中，人工翻看工作量大、容易漏看，也无法确认"是否所有位置都找全了"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 二、用途 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.usage">用途</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">🖼️</span>
+                <span data-i18n="tl.u1"><strong>以截图为切入点，快速定位界面词所在界面：</strong>无需在软件中逐层翻找。输入界面词关键词，所有包含该词的截图立即被筛出，一词落在哪张截图、哪个位置一目了然，看到真实界面上下文，词性、用法当场可辨</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">💾</span>
+                <span data-i18n="tl.u2"><strong>一次 OCR，索引反复使用：</strong>大批量截图完成一次识别后，索引自动保存为 ocr_index.json，下次启动自动加载，无需重新 OCR；还可将索引导出为 JSON 分享给同事，同一份截图全团队只需识别一次</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🔍</span>
+                <span data-i18n="tl.u3"><strong>全文件夹批量 OCR：</strong>一次性识别整个文件夹中的截图，支持 PNG / JPG / JPEG / BMP / TIFF / WEBP，基于 PaddleOCR 中文模型，中英文混合的界面文字均可识别</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🟥</span>
+                <span data-i18n="tl.u4"><strong>关键词红框高亮：</strong>查询结果在截图上用红色矩形框直接圈出关键词所在位置，并支持"上一张 / 下一张"连续浏览全部命中截图</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📄</span>
+                <span data-i18n="tl.u5"><strong>OCR 文本对照面板：</strong>每张截图识别出的全部文字同步显示在下方文本面板中，可结合红框通读该界面的完整文案与上下文</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三、工具界面介绍 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.interface">工具界面介绍</h2>
+        <p style="color:#555; margin-bottom:1.5rem;" data-i18n="tl.iIntro">界面分为顶部操作区、左侧查询面板、右侧图片与文本区、底部状态栏四个部分：</p>
+
+        <div class="shot-frame">
+            <img src="assets/term_locator_screenshot.png" alt="界面词定位工具主界面">
+        </div>
+        <p class="shot-caption" data-i18n="tl.iCap">顶部选择截图文件夹并管理索引，左侧输入关键词查询，右侧查看红框高亮截图与 OCR 文本</p>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s1">1. 顶部操作区 · 第一行（文件夹）</h3>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="d.th.control">控件</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong data-i18n="tl.r1.t">图片文件夹输入框</strong></td><td data-i18n="tl.r1.d">显示已选择的截图文件夹路径（只读），提示文字"请选择包含界面截图的文件夹..."</td></tr>
+                <tr><td><strong data-i18n="tl.r2.t">浏览文件夹</strong></td><td data-i18n="tl.r2.d">点击弹出文件夹选择窗口；选中后状态栏提示该文件夹中共有多少张支持的图片</td></tr>
+                <tr><td><strong data-i18n="tl.r3.t">开始索引</strong></td><td data-i18n="tl.r3.d">对文件夹中的全部图片执行批量 OCR。未选文件夹时灰色不可用；识别过程中临时置灰，进度在状态栏实时显示</td></tr>
+            </tbody>
+        </table>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s2">2. 顶部操作区 · 第二行（索引管理）</h3>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="d.th.control">控件</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong data-i18n="tl.r4.t">导出索引</strong></td><td data-i18n="tl.r4.d">将当前 OCR 索引另存为 JSON 文件，便于备份或发送给同事共享；无索引数据时为灰色</td></tr>
+                <tr><td><strong data-i18n="tl.r5.t">导入索引</strong></td><td data-i18n="tl.r5.d">加载一份已有的索引 JSON，无需重新 OCR。若截图不在原路径下，再用"浏览文件夹"选择本机截图文件夹，程序会自动按文件名匹配显示</td></tr>
+            </tbody>
+        </table>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s3">3. 左侧查询与导航面板</h3>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="d.th.control">控件</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong data-i18n="tl.r6.t">关键词输入框</strong></td><td data-i18n="tl.r6.d">提示文字"输入界面词关键词..."，点击"查询"或直接按回车开始检索</td></tr>
+                <tr><td><strong data-i18n="tl.r7.t">查询</strong></td><td data-i18n="tl.r7.d">在全部已索引截图中检索包含关键词的截图</td></tr>
+                <tr><td><strong data-i18n="tl.r8.t">上一张 / 下一张</strong></td><td data-i18n="tl.r8.d">在命中的截图之间切换；已经是第一张 / 最后一张时对应按钮自动置灰</td></tr>
+                <tr><td><strong data-i18n="tl.r9.t">清空</strong></td><td data-i18n="tl.r9.d">清除关键词输入和当前查询结果，图片区恢复初始提示</td></tr>
+                <tr><td><strong data-i18n="tl.r10.t">第 X/Y 张</strong></td><td data-i18n="tl.r10.d">显示当前是命中结果中的第几张 / 共命中多少张（无结果时显示"第 0/0 张"）</td></tr>
+            </tbody>
+        </table>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s4">4. 右侧上方 · 图片展示区域</h3>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">🖼️</span>
+                <span data-i18n="tl.i4a">展示当前命中的截图，图片按窗口大小等比例自适应缩放显示</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🟥</span>
+                <span data-i18n="tl.i4b">截图中所有包含关键词的文字位置，均用红色矩形框圈注，一眼可见</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📁</span>
+                <span data-i18n="tl.i4c">若索引对应的图片文件已被移动或删除，区域内会提示"图片文件未找到"及原路径</span>
+            </div>
+        </div>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s5">5. 右侧下方 · OCR 识别文本面板</h3>
+        <p style="color:#555;" data-i18n="tl.i5">标题为"OCR 识别文本"，以等宽字体列出当前截图 OCR 识别出的全部文字（只读），可与上方红框截图对照阅读，完整了解该界面的菜单、按钮、提示语等上下文信息。</p>
+
+        <h3 class="detail-sub" data-i18n="tl.i.s6">6. 底部状态栏</h3>
+        <p style="color:#555; margin-bottom:0.8rem;" data-i18n="tl.statusIntro">实时显示当前工作状态，例如：</p>
+        <div class="legend-row">
+            <div class="legend-item legend-gray" data-i18n="tl.st1"><strong>就绪</strong><br>程序启动后的初始状态</div>
+            <div class="legend-item legend-gray" data-i18n="tl.st2"><strong>已选择文件夹，共 N 张图片</strong><br>文件夹选择完成</div>
+            <div class="legend-item legend-gray" data-i18n="tl.st3"><strong>正在索引：文件名（当前/总数）</strong><br>批量 OCR 进行中</div>
+        </div>
+        <div class="legend-row" style="margin-top:0.8rem;">
+            <div class="legend-item legend-green" data-i18n="tl.st4"><strong>已加载 N 张图片的 OCR 索引</strong><br>启动时自动加载了 ocr_index.json</div>
+            <div class="legend-item legend-green" data-i18n="tl.st5"><strong>当前：文件名</strong><br>正在查看某张命中截图</div>
+        </div>
+    </section>
+
+    <!-- 四、使用方法 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.howto">使用方法</h2>
+
+        <h3 class="detail-sub" data-i18n="tl.h.demo">完整操作演示</h3>
+        <div class="shot-frame">
+            <img src="assets/term_locator.gif" alt="界面词定位工具操作演示">
+        </div>
+        <p class="shot-caption" data-i18n="tl.demoCap">选择截图文件夹 → 开始索引 → 输入关键词查询 → 红框定位 → 上一张/下一张浏览</p>
+
+        <h3 class="detail-sub" data-i18n="tl.h.flow">基本操作流程</h3>
+        <ol class="step-list">
+            <li data-i18n="tl.s1"><strong>启动程序：</strong>双击 <code>term_locator.exe</code> 打开工具（请保持 exe 与 <code>_internal</code> 文件夹在同一目录）。若程序同目录已有 <code>ocr_index.json</code>，启动时会自动加载</li>
+            <li data-i18n="tl.s2"><strong>选择截图文件夹：</strong>点击"浏览文件夹"，选择包含界面截图的文件夹，状态栏会提示识别到的图片数量</li>
+            <li data-i18n="tl.s3"><strong>开始索引：</strong>点击"开始索引"，程序逐张进行 OCR，状态栏实时显示进度（文件名 + 当前张数/总张数）。识别完成后索引自动保存到 <code>ocr_index.json</code>，弹窗提示处理结果</li>
+            <li data-i18n="tl.s4"><strong>查询界面词：</strong>在左侧输入框输入界面词关键词（如"设置"），点击"查询"或直接按回车</li>
+            <li data-i18n="tl.s5"><strong>查看定位结果：</strong>
+                <ul class="step-sub">
+                    <li data-i18n="tl.s5a">右侧图片区显示命中截图，关键词位置以红色方框圈出</li>
+                    <li data-i18n="tl.s5b">下方文本面板同步显示该截图的全部 OCR 文字，结合红框判断词性与语境</li>
+                    <li data-i18n="tl.s5c">通过"上一张 / 下一张"浏览全部命中截图，"第 X/Y 张"显示进度</li>
+                </ul>
+            </li>
+            <li data-i18n="tl.s6"><strong>清空重查：</strong>点击"清空"清除当前关键词与结果，再输入新的界面词查询</li>
+            <li data-i18n="tl.s7"><strong>共享与复用索引：</strong>
+                <ul class="step-sub">
+                    <li data-i18n="tl.s7a">点击"导出索引"，将索引另存为 JSON 文件发送给同事或自行备份</li>
+                    <li data-i18n="tl.s7b">同事点击"导入索引"加载该 JSON，再"浏览文件夹"选择本机对应截图文件夹，即可直接查询，双方都无需重复 OCR</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="detail-sub" data-i18n="tl.h.formats">支持的图片格式</h3>
+        <div class="legend-row">
+            <div class="legend-item legend-yellow"><strong>.png / .jpg / .jpeg</strong></div>
+            <div class="legend-item legend-yellow"><strong>.bmp / .tiff / .tif / .webp</strong></div>
+        </div>
+        <p style="color:#555; margin-top:0.8rem;" data-i18n="tl.fmtNote">仅识别图片文件，不支持 PDF；如手册为 PDF，请先将页面导出或截图为图片后再索引。</p>
+
+        <h3 class="detail-sub" data-i18n="tl.h.first">首次使用说明</h3>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">🌐</span>
+                <span data-i18n="tl.ff1"><strong>首次索引需要联网：</strong>程序使用 PaddleOCR 引擎，模型文件（约 100+ MB）在首次执行索引时自动下载，请保持网络连接；下载完成后即可离线使用</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">💾</span>
+                <span data-i18n="tl.ff2"><strong>索引缓存：</strong>索引结果保存在程序同目录的 <code>ocr_index.json</code> 中，下次启动自动加载；大批量截图只需识别一次，之后打开程序即可直接查询</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五、注意事项 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.notes">注意事项</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">1️⃣</span>
+                <span data-i18n="tl.n1"><strong>目录结构：</strong>term_locator.exe 必须与 <code>_internal</code> 文件夹保持在同一目录，请勿单独移动 exe 文件</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">2️⃣</span>
+                <span data-i18n="tl.n2"><strong>启动较慢：</strong>OCR 引擎初始化需要一定时间，双击后请耐心等待界面弹出</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">3️⃣</span>
+                <span data-i18n="tl.n3"><strong>首次索引耗时：</strong>截图数量较多时首次索引时间较长，请等待进度完成；之后启动走缓存索引，查询为秒级</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">4️⃣</span>
+                <span data-i18n="tl.n4"><strong>截图质量：</strong>识别准确率取决于截图清晰度，界面文字过小、模糊或严重变形可能影响识别效果</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">5️⃣</span>
+                <span data-i18n="tl.n5"><strong>索引与图片分开保存：</strong>索引 JSON 中记录的是文字、坐标和图片路径；移动或重命名截图文件夹后，重新"浏览文件夹"选择新位置即可按文件名自动匹配</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">6️⃣</span>
+                <span data-i18n="tl.n6"><strong>索引会合并累积：</strong>对多个文件夹分别执行索引时，新结果会合并进当前索引（以图片路径为键），建议不同手册项目用"导出索引"分别存档</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六、运行环境 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.env">运行环境</h2>
+        <div class="env-box">
+            <p data-i18n="tl.env1"><strong>操作系统：</strong>Windows 7 及以上</p>
+            <p data-i18n="tl.env2"><strong>依赖：</strong>免安装，无需安装 Python 或任何运行环境，双击 exe 即可运行</p>
+        </div>
+        <table class="param-table" style="margin-top:1.2rem;">
+            <thead>
+                <tr><th data-i18n="d.th.file">文件</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>term_locator.exe</code></td><td data-i18n="tl.fe1">主程序（双击运行）</td></tr>
+                <tr><td><code>_internal/</code></td><td data-i18n="tl.fe2">运行时依赖库（请勿删除或移动，必须与 exe 同目录）</td></tr>
+                <tr><td><code>ocr_index.json</code></td><td data-i18n="tl.fe3">默认索引文件（首次索引后自动生成，可删除后重建）</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-i18n="d.footer">© 2026 · 用代码消除重复劳动 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

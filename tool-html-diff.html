@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="hd.title">HTML 批量对比工具 — Lydia's Toolbox</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">LYDIA'S TOOLBOX</a>
+        <div class="nav-links">
+            <a href="index.html#tools" data-i18n="nav.tools">工具</a>
+            <a href="index.html#about" data-i18n="nav.about">关于</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-lang="zh">中文</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </nav>
+
+    <!-- 详情页英雄区 -->
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a href="index.html" class="back-link" data-i18n="d.back">← 返回首页</a>
+            <h1 data-i18n="hd.name">HTML 批量对比工具</h1>
+            <p class="detail-tagline">HTML Diff Compare</p>
+            <p class="detail-intro" data-i18n="hd.intro">批量对比两个手册版本文件夹中 HTML 文件的差异，自动忽略 class/style 等标签属性，只关注用户可见的文本和图片变化。</p>
+            <div class="detail-actions">
+                <a class="btn btn-white" href="https://github.com/Linxinyi-071/html_diff_compare/releases/latest" target="_blank" data-i18n="tool.download">下载 EXE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 一、痛点 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.pain">痛点</h2>
+        <p style="color:#555; margin-bottom:1.5rem;" data-i18n="hd.painIntro">在信息设计、文档本地化等场景中，经常需要批量对比两个版本的 HTML 文件，传统做法存在以下痛点：</p>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <h3 data-i18n="hd.p1.t">📁 文件量大</h3>
+                <p data-i18n="hd.p1.d">一次改版可能涉及上千个 HTML 文件，逐个手动对比不现实</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="hd.p2.t">🖼️ 图片无法对比</h3>
+                <p data-i18n="hd.p2.d">传统文本 diff 无法识别图片的增删变化</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="hd.p3.t">📋 结果难阅读</h3>
+                <p data-i18n="hd.p3.d">难以直观定位修改位置</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="hd.p4.t">🔗 文件映射复杂</h3>
+                <p data-i18n="hd.p4.d">改版后同一 topic 对应的文件名可能变化，无法通过文件名直接匹配对应文件</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 二、用途 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.usage">用途</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">📄</span>
+                <span data-i18n="hd.u1">批量对比两个文件夹中所有 HTML 文件的差异</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🎯</span>
+                <span data-i18n="hd.u2">智能过滤：忽略 class、id、style、href 等标签属性，只对比用户可见的文本内容和图片</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🆕</span>
+                <span data-i18n="hd.u3">自动识别修改的文件和新增的文件</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🌈</span>
+                <span data-i18n="hd.u4">可视化高亮：用颜色直观标注新增（绿色）、删除（红色）、修改的内容</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📑</span>
+                <span data-i18n="hd.u5">导出报告：生成独立的 HTML 差异报告，方便分享和归档</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三、效果 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.effect">效果</h2>
+
+        <h3 class="detail-sub" data-i18n="hd.e.main">软件主界面</h3>
+        <div class="shot-frame">
+            <img src="assets/screenshot_main.png" alt="HTML 批量对比工具主界面">
+        </div>
+        <p class="shot-caption" data-i18n="hd.e.cap1">界面布局清晰，分为文件夹选择区、操作按钮、文件列表和差异预览区</p>
+
+        <h3 class="detail-sub" data-i18n="hd.e.diff">对比效果</h3>
+        <div class="legend-row">
+            <div class="legend-item legend-green" data-i18n="hd.lg.g"><strong>🟩 绿色背景</strong><br>新增的内容</div>
+            <div class="legend-item legend-red" data-i18n="hd.lg.r"><strong>🟥 红色背景</strong><br>删除的内容</div>
+            <div class="legend-item legend-yellow" data-i18n="hd.lg.y"><strong>🟨 黄色标记</strong><br>图片的变化</div>
+        </div>
+
+        <h3 class="detail-sub" data-i18n="hd.e.demo">操作演示</h3>
+        <div class="shot-frame">
+            <img src="assets/html_diff_compare.gif" alt="HTML 批量对比工具操作演示">
+        </div>
+        <p class="shot-caption" data-i18n="hd.e.cap2">完整操作流程：选择文件夹 → 开始对比 → 查看差异 → 导出报告</p>
+    </section>
+
+    <!-- 四、使用方法 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.howto">使用方法</h2>
+
+        <h3 class="detail-sub" data-i18n="hd.h.gui">方式一：图形界面操作（推荐）</h3>
+        <ol class="step-list">
+            <li data-i18n="hd.s1">启动程序：双击 <code>html_diff_compare.exe</code> 打开工具</li>
+            <li data-i18n="hd.s2">选择文件夹：分别选择"变更前"和"变更后"的 HTML 文件夹，以及输出目录（可选，默认为变更后文件夹下的 <code>diff_output</code>）</li>
+            <li data-i18n="hd.s3">开始对比：点击"🚀 开始对比"按钮，等待处理完成</li>
+            <li data-i18n="hd.s4">查看结果：左侧文件列表显示对比状态，点击任意文件，右侧高亮显示具体差异</li>
+            <li data-i18n="hd.s5">导出报告：点击"📄 导出差异报告"，生成完整的 HTML 格式差异报告</li>
+        </ol>
+
+        <h3 class="detail-sub" data-i18n="hd.h.cli">方式二：命令行模式（适合自动化）</h3>
+        <div class="code-block" data-i18n="hd.cli1">html_diff_compare.exe -b "旧版本文件夹路径" -a "新版本文件夹路径" -o "输出目录"</div>
+
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="hd.th.p">参数</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>-b</code> / <code>--before</code></td><td data-i18n="hd.r1d">变更前的 HTML 文件夹路径</td></tr>
+                <tr><td><code>-a</code> / <code>--after</code></td><td data-i18n="hd.r2d">变更后的 HTML 文件夹路径</td></tr>
+                <tr><td><code>-o</code> / <code>--output</code></td><td data-i18n="hd.r3d">输出目录（可选，默认为变更后文件夹下的 <code>diff_output</code>）</td></tr>
+                <tr><td><code>-v</code> / <code>--verbose</code></td><td data-i18n="hd.r4d">显示详细处理过程（可选）</td></tr>
+            </tbody>
+        </table>
+
+        <div class="code-block">html_diff_compare.exe -b "D:\site_v1" -a "D:\site_v2" -o "D:\diff_report" -v</div>
+
+        <h3 class="detail-sub" data-i18n="hd.h.match">文件匹配策略</h3>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">1️⃣</span>
+                <span data-i18n="hd.m1"><strong>index.json 映射：</strong>如果变更后文件夹中存在 <code>index.json</code> 文件，工具会按照其中定义的映射关系匹配文件（适用于改版后文件名变化的场景）</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">2️⃣</span>
+                <span data-i18n="hd.m2"><strong>文件名匹配：</strong>如果没有 <code>index.json</code>，则按文件名直接匹配</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五、运行环境 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.env">运行环境</h2>
+        <div class="env-box">
+            <p data-i18n="hd.env1"><strong>操作系统：</strong>Windows 7 及以上</p>
+            <p data-i18n="hd.env2"><strong>依赖：</strong>无需安装 Python，双击 exe 即可运行</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-i18n="d.footer">© 2026 · 用代码消除重复劳动 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

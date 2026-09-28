@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="tc.title">界面词校验工具 — Lydia's Toolbox</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">LYDIA'S TOOLBOX</a>
+        <div class="nav-links">
+            <a href="index.html#tools" data-i18n="nav.tools">工具</a>
+            <a href="index.html#about" data-i18n="nav.about">关于</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-lang="zh">中文</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </nav>
+
+    <!-- 详情页英雄区 -->
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a href="index.html" class="back-link" data-i18n="d.back">← 返回首页</a>
+            <h1 data-i18n="tc.name">界面词校验工具</h1>
+            <p class="detail-tagline">Term Checker</p>
+            <p class="detail-intro" data-i18n="tc.intro">从 PDF 手册中智能提取界面词（被引号包裹的 UI 文本），自动对照中英术语表标记翻译不准确的界面词，并支持 PDF 原位定位预览。</p>
+            <div class="detail-actions">
+                <a class="btn btn-white" href="https://github.com/Linxinyi-071/term_checker/releases/latest" target="_blank" data-i18n="tool.download">下载 EXE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 一、痛点 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.pain">痛点</h2>
+        <p style="color:#555; margin-bottom:1.5rem;" data-i18n="tc.painIntro">在软件手册、帮助文档的翻译与本地化工作中，需要检验手册中的界面词是否与实际软件界面一致，传统做法存在以下痛点：</p>
+        <div class="pain-grid pain-grid-3">
+            <div class="pain-card">
+                <h3 data-i18n="tc.p1.t">📖 文档页数多</h3>
+                <p data-i18n="tc.p1.d">一份产品手册动辄上百页，人工逐页查找引号内容耗时且容易遗漏</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="tc.p2.t">💻 噪音干扰大</h3>
+                <p data-i18n="tc.p2.d">PDF 中被引号包裹的内容不全是界面词，还混有代码、函数名等，人工甄别费时费力</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="tc.p3.t">📊 术语核对难</h3>
+                <p data-i18n="tc.p3.d">即使找出了界面词，还需逐条与软件界面上的界面词比对，确认译法是否一致</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 二、用途 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.usage">用途</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">🔍</span>
+                <span data-i18n="tc.u1">智能提取：自动从 PDF 中提取所有 UI 界面文本</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🧹</span>
+                <span data-i18n="tc.u2">智能过滤：通过上下文排除非界面词内容，如小节名、参数名等非界面内容</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📊</span>
+                <span data-i18n="tc.u3">术语核对：将提取结果与中英对照表（Excel/CSV）自动比对，快速发现与术语表不一致的界面词</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🎨</span>
+                <span data-i18n="tc.u4">人工二次检索：用户可对提取结果采取去重、忽略、分类、导出等操作</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📄</span>
+                <span data-i18n="tc.u5">PDF 定位预览：点击任意提取结果，自动跳转到 PDF 对应页面并高亮显示，方便核对上下文</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">📤</span>
+                <span data-i18n="tc.u6">结果导出：支持导出全部引号（JSON）或仅导出未匹配项（Excel/CSV/JSON）</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三、效果 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.effect">效果</h2>
+
+        <h3 class="detail-sub" data-i18n="tc.e.main">软件主界面</h3>
+        <div class="shot-frame">
+            <img src="assets/term_checker_screenshot.png" alt="界面词校验工具主界面">
+        </div>
+        <p class="shot-caption" data-i18n="tc.e.cap">左侧提取结果列表 + 右侧 PDF 原位预览，所见即所得</p>
+
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="tc.th.area">区域</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong data-i18n="tc.r1.t">选择文件</strong></td><td data-i18n="tc.r1.d">选择待检查的 PDF 文件；可选填中英对照表（Excel/CSV）</td></tr>
+                <tr><td><strong data-i18n="tc.r2.t">操作按钮</strong></td><td data-i18n="tc.r2.d">开始匹配、导出所有引号、导出未匹配、清空</td></tr>
+                <tr><td><strong data-i18n="tc.r3.t">引号列表 / 检查结果</strong></td><td data-i18n="tc.r3.d">展示提取的界面词及匹配状态，支持按 全部/已匹配/未匹配 筛选、去重、忽略标记、复制</td></tr>
+                <tr><td><strong data-i18n="tc.r4.t">PDF 预览</strong></td><td data-i18n="tc.r4.d">点击左侧列表项自动跳转对应页并高亮，支持翻页和缩放</td></tr>
+                <tr><td><strong data-i18n="tc.r5.t">统计单词数</strong></td><td data-i18n="tc.r5.d">统计当前筛选列表中的单词总数和字符总数</td></tr>
+                <tr><td><strong data-i18n="tc.r6.t">状态栏</strong></td><td data-i18n="tc.r6.d">实时显示当前操作进度</td></tr>
+            </tbody>
+        </table>
+
+        <h3 class="detail-sub" data-i18n="tc.e.legend">匹配状态颜色标识</h3>
+        <div class="legend-row">
+            <div class="legend-item legend-green" data-i18n="tc.lg.g"><strong>🟩 淡绿色行</strong><br>该界面词在对照表中找到标准翻译（已匹配）</div>
+            <div class="legend-item legend-red" data-i18n="tc.lg.r"><strong>🟥 淡红色行</strong><br>对照表中不存在该界面词（未匹配，需补充术语表）</div>
+            <div class="legend-item legend-gray" data-i18n="tc.lg.gray"><strong>⚪ 灰色行</strong><br>被手动标记忽略的项</div>
+        </div>
+
+        <h3 class="detail-sub" data-i18n="tc.e.filter">智能过滤逻辑</h3>
+        <p style="color:#555; margin-bottom:1rem;" data-i18n="tc.fIntro">工具并非简单提取引号内容，而是经过多层过滤，只保留真正的界面词：</p>
+        <ol class="step-list">
+            <li data-i18n="tc.f1"><strong>上下文判断：</strong>引号前后 10 个单词内需包含交互关键词（click、button、window、select 等）</li>
+            <li data-i18n="tc.f2"><strong>排除规则：</strong>自动排除驼峰命名（代码变量）、不含字母的内容、全小写内容、Title Capital 格式、含 <code>&gt;</code> 符号的内容</li>
+            <li data-i18n="tc.f3"><strong>上下文排除：</strong>上下文包含 icon、see、section、chapter 等词时排除</li>
+            <li data-i18n="tc.f4"><strong>换行修复：</strong><code>but- ton</code> → <code>button</code></li>
+        </ol>
+
+        <h3 class="detail-sub" data-i18n="tc.e.demo">操作演示</h3>
+        <div class="shot-frame">
+            <img src="assets/term_checker.gif" alt="界面词校验工具操作演示">
+        </div>
+        <p class="shot-caption" data-i18n="tc.e.cap2">完整操作流程：选择 PDF → 选择对照表 → 开始匹配 → 定位核对 → 导出结果</p>
+    </section>
+
+    <!-- 四、使用方法 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.howto">使用方法</h2>
+
+        <ol class="step-list">
+            <li data-i18n="tc.s1">启动程序：双击 <code>term_checker.exe</code> 打开工具</li>
+            <li data-i18n="tc.s2">选择 PDF 文件：点击"浏览 PDF"按钮，选择要检查的 PDF 文档</li>
+            <li data-i18n="tc.s3">选择对照表（可选）：选择中英术语对照表（Excel 或 CSV 格式）。不选择时仅提取界面词、不做匹配</li>
+            <li data-i18n="tc.s4">开始匹配：点击"🖊 开始匹配"按钮，程序自动完成提取与比对，进度实时显示在状态栏</li>
+            <li data-i18n="tc.s5">查看结果：点击任意条目，右侧 PDF 预览自动跳转对应页并高亮；可用筛选按钮查看 全部 / 已匹配 / 未匹配，勾选"去重"仅显示不重复项</li>
+            <li data-i18n="tc.s6">标记忽略：点击条目第一列的 <code>[ ]</code> 可标记忽略（灰色），再次点击取消；支持选中多条后批量操作</li>
+            <li data-i18n="tc.s7">导出结果：可导出全部引号（JSON），或仅导出未匹配项（Excel / CSV / JSON）</li>
+            <li data-i18n="tc.s8">统计单词数：点击"统计单词数"按钮，统计当前筛选列表的单词总数和字符总数</li>
+        </ol>
+
+        <h3 class="detail-sub" data-i18n="tc.h.glossary">对照表格式要求</h3>
+        <p style="color:#555; margin-bottom:1rem;" data-i18n="tc.gIntro">对照表需为 Excel 或 CSV 文件，包含至少两列：</p>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="tc.gth.zh">中文</th><th data-i18n="tc.gth.en">英文</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>确定</td><td>OK</td></tr>
+                <tr><td>取消</td><td>Cancel</td></tr>
+                <tr><td>保存</td><td>Save</td></tr>
+            </tbody>
+        </table>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">🏷️</span>
+                <span data-i18n="tc.g1">列名包含 <strong>英文 / english / en</strong> 会被识别为英文列；列名包含 <strong>中文 / chinese / cn</strong> 会被识别为中文列</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">⚙️</span>
+                <span data-i18n="tc.g2">若无法自动识别，则默认第 2 列为英文列、第 1 列为中文列；匹配时忽略标点符号并统一转为小写</span>
+            </div>
+        </div>
+
+        <h3 class="detail-sub" data-i18n="tc.h.export">导出格式说明</h3>
+        <p style="color:#555; margin-bottom:0.8rem;" data-i18n="tc.exIntro">导出所有引号（JSON）示例：</p>
+        <div class="code-block">[
+  {
+    "quote": "OK",
+    "quotes": "\"",
+    "page": 0,
+    "type": "Double Quote",
+    "matched": true,
+    "translation": "确定",
+    "ignored": false
+  }
+]</div>
+        <p style="color:#555;" data-i18n="tc.exOutro">导出未匹配（Excel/CSV/JSON）：包含序号、引号内容、页码、类型字段。</p>
+    </section>
+
+    <!-- 五、注意事项 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.notes">注意事项</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">1️⃣</span>
+                <span data-i18n="tc.n1"><strong>PDF 类型：</strong>仅支持可提取文本的 PDF（扫描件无法提取文字）</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">2️⃣</span>
+                <span data-i18n="tc.n2"><strong>对照表可选：</strong>不提供对照表时仅做提取，不做匹配</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">3️⃣</span>
+                <span data-i18n="tc.n3"><strong>大文件处理：</strong>页数较多的 PDF 处理时间较长，请耐心等待进度完成</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">4️⃣</span>
+                <span data-i18n="tc.n4"><strong>忽略同步：</strong>忽略操作会自动同步所有相同内容的引号项</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">5️⃣</span>
+                <span data-i18n="tc.n5"><strong>快速复制：</strong>双击列表项即可复制该引号内容到剪贴板</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六、运行环境 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.env">运行环境</h2>
+        <div class="env-box">
+            <p data-i18n="tc.env1"><strong>操作系统：</strong>Windows 7 及以上</p>
+            <p data-i18n="tc.env2"><strong>依赖：</strong>无需安装 Python 或任何运行环境，双击 exe 即可运行</p>
+            <p data-i18n="tc.env3"><strong>文件说明：</strong>请保持 term_checker.exe 与 <code>_internal</code> 文件夹在同一目录，一起解压分发</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-i18n="d.footer">© 2026 · 用代码消除重复劳动 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

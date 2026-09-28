@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="xs.title">XML 文件排序工具 — Lydia's Toolbox</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">LYDIA'S TOOLBOX</a>
+        <div class="nav-links">
+            <a href="index.html#tools" data-i18n="nav.tools">工具</a>
+            <a href="index.html#about" data-i18n="nav.about">关于</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-lang="zh">中文</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </nav>
+
+    <!-- 详情页英雄区 -->
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a href="index.html" class="back-link" data-i18n="d.back">← 返回首页</a>
+            <h1 data-i18n="xs.name">XML 文件排序工具</h1>
+            <p class="detail-tagline">SortTool / SortUndo</p>
+            <p class="detail-intro" data-i18n="xs.intro">将翻译系统导出的 XML 文件按手册目录架构一键排序：把文件夹拖到程序图标上，自动解析 XLF 目录文件并添加序号前缀；翻译完成后再用 SortUndo 一键还原原始文件名。</p>
+            <div class="detail-actions">
+                <a class="btn btn-white" href="https://github.com/Linxinyi-071/xml_sort/releases/latest" target="_blank" data-i18n="tool.download">下载 EXE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 一、痛点 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.pain">痛点</h2>
+        <p style="color:#555; margin-bottom:1.5rem;" data-i18n="xs.painIntro">在文档本地化和翻译管理流程中，从翻译系统导出的 XML 文件通常以原始文件名命名，与手册目录架构不一致，存在以下痛点：</p>
+        <div class="pain-grid pain-grid-3">
+            <div class="pain-card">
+                <h3 data-i18n="xs.p1.t">📄 文件无序</h3>
+                <p data-i18n="xs.p1.d">导出的 XML 文件命名不统一，无法按目录架构顺序排列</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="xs.p2.t">⏱️ 效率低下</h3>
+                <p data-i18n="xs.p2.d">译员翻译时需手动定位各个 XML 文件在手册中的位置，无法按目录架构顺序进行翻译</p>
+            </div>
+            <div class="pain-card">
+                <h3 data-i18n="xs.p3.t">🔙 操作复杂</h3>
+                <p data-i18n="xs.p3.d">传统 GUI 程序需手动输入文件夹路径和目标路径，操作繁琐耗时长；翻译完成后还要手动把文件名改回去</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 二、用途 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.usage">用途</h2>
+        <div class="usage-list">
+            <div class="usage-item">
+                <span class="usage-icon">📂</span>
+                <span data-i18n="xs.u1"><strong>一键排序：</strong>将目标文件夹拖拽到程序图标上，自动按目录架构为 XML 文件添加序号前缀，完成排序</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🔍</span>
+                <span data-i18n="xs.u2"><strong>智能匹配：</strong>自动解析目标文件夹中的 <code>.xlf</code> 目录架构文件，建立 XML 文件与目录架构的对应关系</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">🔤</span>
+                <span data-i18n="xs.u3"><strong>多级匹配：</strong>优先精确匹配；无法精确匹配时，自动采用关键词重叠度最高的翻译名称，保证排序不遗漏</span>
+            </div>
+            <div class="usage-item">
+                <span class="usage-icon">↩️</span>
+                <span data-i18n="xs.u4"><strong>一键还原：</strong>配套 SortUndo 工具，拖拽文件夹即可去掉全部序号前缀，恢复原始文件名，与导出时完全一致</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三、效果 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.effect">效果</h2>
+
+        <h3 class="detail-sub" data-i18n="xs.e.before">排序前</h3>
+        <div class="shot-frame">
+            <img src="assets/xml_sort_before.png" alt="XML 文件排序前">
+        </div>
+        <p class="shot-caption" data-i18n="xs.e.beforeCap">文件按原始文件名排列，与手册目录架构顺序不一致，译员无法按目录顺序翻译</p>
+
+        <h3 class="detail-sub" data-i18n="xs.e.after">排序后</h3>
+        <div class="shot-frame">
+            <img src="assets/xml_sort_after.png" alt="XML 文件排序后">
+        </div>
+        <p class="shot-caption" data-i18n="xs.e.afterCap">每个文件名前添加数字序号前缀（01_、02_……），与 XLF 目录架构顺序一致，资源管理器中按名称排序即为手册顺序</p>
+
+        <h3 class="detail-sub" data-i18n="xs.e.undo">SortUndo 还原后</h3>
+        <div class="legend-row">
+            <div class="legend-item legend-green" data-i18n="xs.undoText">将排序后的文件夹拖到 <strong>SortUndo.exe</strong> 图标上，一键去掉序号前缀，恢复的原始文件名与导出时完全一致</div>
+        </div>
+    </section>
+
+    <!-- 四、使用方法 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.howto">使用方法</h2>
+
+        <h3 class="detail-sub" data-i18n="xs.h.drag">方式一：拖拽操作（推荐）</h3>
+        <div class="shot-frame">
+            <img src="assets/xml_sort.gif" alt="XML 排序工具拖拽操作演示">
+        </div>
+        <p class="shot-caption" data-i18n="xs.dragCap">拖入文件夹 → 自动排序；翻译完成后再拖一次 → 自动还原</p>
+        <ol class="step-list">
+            <li data-i18n="xs.s1"><strong>启动排序：</strong>将目标文件夹（同时包含 <code>.xml</code> 和 <code>.xlf</code> 文件）直接拖拽到 <code>SortTool.exe</code> 图标上，程序自动处理，完成后弹出提示框显示处理结果</li>
+            <li data-i18n="xs.s2"><strong>一键还原：</strong>翻译完成后，将已排序的文件夹拖拽到 <code>SortUndo.exe</code> 图标上，自动去掉所有 XML 文件名前的序号前缀，恢复原始名称</li>
+        </ol>
+
+        <h3 class="detail-sub" data-i18n="xs.h.cli">方式二：命令行模式</h3>
+        <div class="code-block">SortTool.exe "文件夹路径"</div>
+        <div class="code-block">SortUndo.exe "文件夹路径"</div>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="xs.th.arg">参数</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code data-i18n="xs.argName">文件夹路径</code></td><td data-i18n="xs.argDesc">包含待处理文件的文件夹路径（需同时含 .xml 与 .xlf 文件）</td></tr>
+            </tbody>
+        </table>
+
+        <h3 class="detail-sub" data-i18n="xs.h.req">输入文件要求</h3>
+        <p style="color:#555;" data-i18n="xs.reqIntro">目标文件夹中需同时包含以下两类文件：</p>
+        <table class="param-table">
+            <thead>
+                <tr><th data-i18n="xs.reqTh.type">文件类型</th><th data-i18n="d.th.desc">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>*.xml</code></td><td data-i18n="xs.req1">待排序的 XML 文件，文件名需以 <code>T</code> 开头（如 <code>T1001.xml</code>）</td></tr>
+                <tr><td><code>*.xlf</code></td><td data-i18n="xs.req2">XLF 翻译文件，定义章节的目录顺序，是排序的依据</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 五、运行环境 -->
+    <section class="detail-section">
+        <h2 data-i18n="d.env">运行环境</h2>
+        <div class="env-box">
+            <p data-i18n="xs.env1"><strong>操作系统：</strong>Windows 7 及以上</p>
+            <p data-i18n="xs.env2"><strong>依赖：</strong>无需安装 Python，SortTool.exe 与 SortUndo.exe 双击即可运行</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-i18n="d.footer">© 2026 · 用代码消除重复劳动 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
